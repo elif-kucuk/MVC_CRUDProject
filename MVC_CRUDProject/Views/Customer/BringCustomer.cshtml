@@ -1,0 +1,37 @@
+﻿@model MVC_CRUDProject.Models.User
+@{
+    ViewBag.Title = "BringCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+
+                <br />
+                @Html.LabelFor(x => x.ID)
+                @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+
+                @Html.LabelFor(x => x.Username)
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+
+                @Html.LabelFor(x => x.Full_name)
+                @Html.TextBoxFor(x => x.Full_name, new { @class = "form-control" })
+
+                @Html.LabelFor(x => x.Phone_or_Email)
+                @Html.TextBoxFor(x => x.Phone_or_Email, new { @class = "form-control" })
+
+                @Html.LabelFor(x => x.Password)
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+            </div>
+            <div>
+                <button class="btn btn-warning">Update Product</button>
+            </div>
+        </div>
+
+    </div>
+}
+

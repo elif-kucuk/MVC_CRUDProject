@@ -1,0 +1,40 @@
+﻿@model List<MVC_CRUDProject.Models.User>
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("CustomerList", "Customer", FormMethod.Get)) {
+
+    <br />
+    <p><b>Customer Name : @Html.TextBox("p")</b>
+    <input type="submit" value="Search"/>
+    </p> 
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Full Name</th>
+            <th>Email or Phone</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Full_name</td>
+                <td>@user.Phone_or_Email</td>
+                <td>@user.Password</td>
+                <td>
+                    @Html.ActionLink("DELETE", "DELETE", new { id = user.ID }, new { @class = "btn btn-danger", onclick = "return confirm=('Are you sure you want to delete')" })
+                    <a href="/Customer/BringCustomer/@user.ID" class="btn btn-success">UPDATE</a>
+                </td>
+            </tr>
+
+            }
+    </tbody>
+</table>
+<a href="/Customer/Insert/" class="btn btn-primary">Add Customer</a>

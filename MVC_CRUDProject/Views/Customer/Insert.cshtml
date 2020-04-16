@@ -1,0 +1,39 @@
+﻿@model MVC_CRUDProject.Models.User
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" method="post">
+                <br />
+                <label>User Name</label>
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group" method="post">
+                <br />
+                <label>Full Name</label>
+                @Html.TextBoxFor(x => x.Full_name, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group" method="post">
+                <br />
+                <label>Phone or Email</label>
+                @Html.TextBoxFor(x => x.Phone_or_Email, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group" method="post">
+                <br />
+                <label>Password</label>
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+}
+

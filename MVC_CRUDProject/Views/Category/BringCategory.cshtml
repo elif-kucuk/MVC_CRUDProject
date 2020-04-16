@@ -1,0 +1,31 @@
+﻿@model MVC_CRUDProject.Models.Category
+@{
+    ViewBag.Title = "BringCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Category", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+
+                <br />
+                @Html.LabelFor(x => x.CategoryID)
+                @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control", required="required" })
+
+                @Html.LabelFor(x => x.CategoryName)
+                @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control", required="required" })
+
+                @Html.LabelFor(x => x.Description)
+                @Html.TextBoxFor(x => x.Description, new { @class = "form-control", required="required" })
+            </div>
+            <div>
+                <button class="btn btn-warning">Update Product</button>
+            </div>
+        </div>
+       
+    </div>
+                }
+

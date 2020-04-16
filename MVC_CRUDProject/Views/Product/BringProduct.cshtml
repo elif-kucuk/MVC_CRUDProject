@@ -1,0 +1,40 @@
+﻿@model MVC_CRUDProject.Models.Product
+@{
+    ViewBag.Title = "BringProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ProductUpdate", "Product", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <br />
+                @Html.LabelFor(x => x.ProductID)
+                @Html.TextBoxFor(x => x.ProductID, new { @class = "form-control" })
+                <br />
+                @Html.LabelFor(x => x.ProductName)
+                @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+                <br />
+                @Html.LabelFor(x => x.Category.CategoryName)
+                @Html.DropDownListFor(x=>x.Category.CategoryID,(List<SelectListItem>)ViewBag.dgr,new { @class = "form-control" })
+                @*@Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })*@
+
+                <br />
+                @Html.LabelFor(x => x.UnitPrice)
+                @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+                <br />
+                @Html.LabelFor(x => x.UnitsInStock)
+                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control" })
+
+
+
+            </div>
+            <div>
+                <button class="btn btn-warning">Update Product</button>
+            </div>
+        </div>
+    </div>
+}
+

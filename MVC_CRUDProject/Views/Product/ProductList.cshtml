@@ -1,0 +1,53 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MVC_CRUDProject.Models.Product>
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table id="product-table" class="table table-hover">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Kategori</th>
+            <th>Units In Stock</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductID</td>
+                <td>@product.ProductName</td>
+                <td>@product.Category.CategoryName</td>
+                <td>@product.UnitsInStock</td>
+                <td>@product.UnitPrice</td>
+                <td>
+                    @*<a href="/Product/Delete/@product.ProductID" class="btn btn-danger">DELETE</a>*@
+                    @Html.ActionLink("DELETE", "DELETE", new { id = product.ProductID }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete??')" })
+
+                    <a href="/Product/BringProduct/@product.ProductID" class="btn btn-success">UPDATE</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("ProductList", new { page }))
+
+<a href="/Product/Insert/" class="btn btn-primary">Add Product</a>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-html5-1.5.6/fh-3.1.4/datatables.min.js"></script>
+
+
+@section scripts{
+
+    <script>
+            $('#product-table').DataTable;
+        </script>
+}

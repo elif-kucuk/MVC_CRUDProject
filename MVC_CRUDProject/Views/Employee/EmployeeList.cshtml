@@ -1,0 +1,44 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<MVC_CRUDProject.Models.Employee> 
+    
+@{
+    ViewBag.Title = "EmployeeList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>City</th>
+            <th>Process</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeID</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.City</td>
+                <td>
+                    @*<a href="/Employee/Delete/@employee.EmployeeID" class="btn btn-danger">DELETE</a>*@
+                    @Html.ActionLink("DELETE", "DELETE", new { id = employee.EmployeeID }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete??')" })
+
+                    <a href="/Employee/BringEmployee/@employee.EmployeeID" class="btn btn-success">UPDATE</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("EmployeeList",new { page}))
+<a href="/Employee/Insert/" class="btn btn-primary">Add Employee</a>
+

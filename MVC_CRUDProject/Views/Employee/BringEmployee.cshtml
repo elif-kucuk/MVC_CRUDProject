@@ -1,0 +1,36 @@
+﻿@model MVC_CRUDProject.Models.Employee
+@{
+    ViewBag.Title = "BringEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <br />
+                @Html.LabelFor(x => x.EmployeeID)
+                @Html.TextBoxFor(x => x.EmployeeID, new { @class = "form-control"})
+                <br />
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control"})
+                <br />
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control"})
+                <br />
+                @Html.LabelFor(x => x.City)
+                @Html.DropDownListFor(x => x.City, (List<SelectListItem>)ViewBag.city, new { @class = "form-control" })
+
+
+
+            </div>
+            <div>
+                <button class="btn btn-warning">Update Employee</button>
+            </div>
+        </div>
+    </div>
+}
+
